@@ -10,13 +10,12 @@ const Posts = ({ posts, loading,movieId }) => {
     );
   }
 
-  // let movieId = 1;
   return (
     <div className='container col col-sm-12 col-md-6 col-lg-12  card-group d-flex flex-start '>
       {posts.map(post => (
         <div key={movieId++} className='mb-4'>
           <div className="card  text-center m-2 h-100 d-inline-block col col-sm-12 col-md-6 col-lg-12 col-xl-4"
-            style={{ width: '12rem' }}>
+            style={{ width: '12rem',backgroundColor:'rgb(22, 22, 22)' }}>
             <div className="card-body ">
               <h5 className="card-title"></h5>
               <div className="col-auto d-none d-lg-block ">

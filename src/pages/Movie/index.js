@@ -59,28 +59,13 @@ const Movie = () => {
         return <div>error</div>;
     }
     return (
+        
         <div>
             <Header />
-            {/* <div className="container">
-                <div className="row">
-
-                    <div className="col-12 col-md-6">
-                        <img
-                            src={movie.poster}
-                            alt={movie.title}
-                            className="img-fluid"
-                        />
-                    </div>
-                    <div className="col-12 col-md-6">
-                        <h1>title:{movie.title}</h1>
-                        <p>year:{movie.year}</p>
-                        <p>plot:{movie.plot}</p>
-                    </div>
-                </div>
-            </div>
-        </div> */}
             <MoviePost movie={movie} />
         </div>
+        
+        
     );
 }
 
