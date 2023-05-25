@@ -1,9 +1,9 @@
 import React from "react";
 import {FaPlay} from 'react-icons/fa';
 import './style.css';
-function MoviePost({movie}) {
+function MoviePost({movie}){
     return (
-        <div className="container ">
+        <div className="container " >
         <div className="movie-container m-5 p-5 ">
         <div className="row d-flex align-items-stretch">
           <div className="col-md-5 col-lg-5 "style={{marginTop:'4%'}}>
@@ -15,6 +15,7 @@ function MoviePost({movie}) {
             <ul className="movie-tags">
               <li className="selected bg-warning">{movie.imdb_rating}</li>
               <li>{movie.year}</li>
+              <li>{movie.runtime}</li>
               <li>{movie.genres}</li>
             </ul>
             <div style={{clear:'both'}}> </div>

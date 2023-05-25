@@ -6,6 +6,9 @@ import Pagination from "react-js-pagination";
 import Loading from '../../components/Loading';
 import enHancedFetch from "../../services/http";
 import { getItem, setItem } from "../../services/storage";
+
+import './style.css';
+
 const Home = () => {
   let numberpage = 1;
 
@@ -68,15 +71,15 @@ const Home = () => {
 
   return (
     <div>
-      <Header search={search} setCurrentPage={setCurrentPage} setSearch={setSearch}> </Header>
+      <Header > </Header>
       
       <input type="text" onChange={(e) => setSearch(e.target.value)} />
       <button onClick={() => {
         setCurrentPage(search);
-        //  setMovieId(search);
+        setMovieId(search);
       }}>Search</button>
       <Posts posts={posts} loading={loading}  movieId={movieId}/>
-      <Pagination
+      <Pagination className="pagination"
         itemsCountPerPage={postsPerPage}
         totalItemsCount={totalPosts}
         pageRangeDisplayed={5}

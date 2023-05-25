@@ -5,7 +5,7 @@ const Loading = () => {
     <>
       <div className="spinner-border" role="status">
       </div>
-      <span className="sr-only">Loading...</span>
+      
     </>
   )
 }

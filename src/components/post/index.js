@@ -29,7 +29,7 @@ const Posts = ({ posts, loading,movieId }) => {
               <p className="card-text"> title : {post.title}</p>
            
             </div>
-            <small class=" card-text text-muted d-flex justify-content-center mt-4 ">{post.imdb_rating}<FaStar style={{color:'yellow' }} /></small>
+            <small className=" card-text text-muted d-flex justify-content-center mt-4 ">{post.imdb_rating}<FaStar style={{color:'yellow' }} /></small>
             <Link to={`/movie/${movieId}`} className="btn btn-sm btn-warning mt-2">read more</Link>
           </div>
           </div>
