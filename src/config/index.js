@@ -12,7 +12,7 @@ const AppRoutes = () => {
         path: "/movie/:id",
         element: <Movie />
     },
-    
+
     {
         path: "*",
         element: <Navigate to="/1" />

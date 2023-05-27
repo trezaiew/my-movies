@@ -3,8 +3,8 @@ import './style.css';
 function Header() {
  
     return (
-  
-      <nav className="navbar navbar-expand-lg navbar-dark bg-warning position-sticky mt-0">
+    // <div className='bg-warning'>
+      <nav className="navbar navbar-expand-lg bg-warning navbar-dark mt-0">
         <a className="navbar-brand" href="#">MyMovies</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -29,6 +29,7 @@ function Header() {
             </li>
 
           </ul>
+        
     {/* <form className="form-inline my-2 my-lg-0">
           <input type="text" onChange={(e) => setSearch(e.target.value)} />
           <button onClick={() => {
@@ -47,6 +48,8 @@ function Header() {
       </button>
         </form> */}
       </nav>
+    // </div>
+    
     )
   }
   

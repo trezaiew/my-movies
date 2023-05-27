@@ -3,32 +3,45 @@ import { useState, useEffect } from 'react';
 import Header from "../../components/Header";
 import Posts from '../../components/post';
 import Pagination from "react-js-pagination";
+import ListGenres from "../../components/ListGenres";
+import SearchBox from "../../components/SearchBox";
 import Loading from '../../components/Loading';
 import enHancedFetch from "../../services/http";
 import { getItem, setItem } from "../../services/storage";
-
+import { useParams } from "react-router-dom";
 import './style.css';
 
 const Home = () => {
-  let numberpage = 1;
+  
+  const { numberPage } = useParams();
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(numberpage);
+  const [currentPage, setCurrentPage] = useState(numberPage);
   const [postsPerPage] = useState(10);
   const [movieId, setMovieId] = useState(1);
   const [search, setSearch] = useState('');
   const [totalPosts, setTotalPosts] = useState(0);
   const [error, setError] = useState(false);
+  const [genres, setGenres] = useState([]);
+  const [genreId, setGenreId] = useState(0);
 
-  const BASE_API_URL = "https://moviesapi.ir/api/v1/movies";
+  let BASE_API_URL = "https://moviesapi.ir/api/v1/movies";
+  const BASE_API_URL_GENRES = "https://moviesapi.ir/api/v1/genres";
+
+  if (genreId) {
+      
+    BASE_API_URL ="https://moviesapi.ir/api/v1/genres/" + genreId + "/movies";
+
+  }
 
   useEffect(() => {
 
+    console.log("useEffect");
     const fetchPosts = async () => {
       setLoading(true);
 
-      let data = getItem(currentPage);
+      let data = getItem(`${genreId}-${currentPage}`);
       if (data) {
         setTotalPosts(data.metadata.total_count);
         setPosts(data.data);
@@ -45,7 +58,7 @@ const Home = () => {
           endPoint,
           ""
         );
-        setItem(currentPage, res);
+        setItem(`${genreId}-${currentPage}`, res);
         setTotalPosts(res.metadata.total_count);
 
         setPosts(res.data);
@@ -59,34 +72,52 @@ const Home = () => {
 
     };
 
+    const fetchGenres = async () => {
+      try {
+        const res = await enHancedFetch(
+          'GET',
+          BASE_API_URL_GENRES,
+          ""
+        );
+    
+        setItem('genres', res);
+        setGenres(res);
+        setError(false);
+
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+
+
+    };
+
+    fetchGenres();
     fetchPosts();
-  }, [currentPage]);
+  }, [genreId,currentPage]);
 
   // Change page
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  console.log(posts);
-
   return (
     <div>
       <Header > </Header>
-      
-      <input type="text" onChange={(e) => setSearch(e.target.value)} />
-      <button onClick={() => {
-        setCurrentPage(search);
-        setMovieId(search);
-      }}>Search</button>
+      <ListGenres genres={genres} genreId={genreId} setGenreId={setGenreId} />
+      <SearchBox setCurrentPage={setCurrentPage} setSearch={setSearch} search={search}/>
+
       <Posts posts={posts} loading={loading}  movieId={movieId}/>
       <Pagination className="pagination"
         itemsCountPerPage={postsPerPage}
         totalItemsCount={totalPosts}
         pageRangeDisplayed={5}
         onChange={paginate}
-        activePage={currentPage}
+        activePage={Number(currentPage)}
       
       />
+      
     </div>
   );
 }

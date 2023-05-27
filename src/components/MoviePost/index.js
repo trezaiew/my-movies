@@ -12,7 +12,7 @@ function MoviePost({movie}){
           </div>
           <div className="col-md-7 col-lg-7 d-flex flex-column justify-content-start">
             <h1 className="mb-3">{movie.title}</h1>
-            <ul className="movie-tags">
+            <ul className="movie-tags flex-wrap mb-2">
               <li className="selected bg-warning">{movie.imdb_rating}</li>
               <li>{movie.year}</li>
               <li>{movie.runtime}</li>
