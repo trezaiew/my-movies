@@ -20,8 +20,7 @@ const Movie = () => {
 
         const fetchMovie = async () => {
             let res = getItem(`movie${id}`);
-           
-            // setLoading(true);
+
             try {
                 if (res === null) {
                     res = await fetch(
@@ -29,7 +28,7 @@ const Movie = () => {
                     );
                     res = await res.json();
                 }
-                
+
                 setItem(`movie${id}`, res);
                 setMovie(res);
                 setError(false);
@@ -53,15 +52,15 @@ const Movie = () => {
         return <div>error</div>;
     }
     return (
-        
+
         <div>
             <Header />
-   
-                <MoviePost movie={movie} />
+
+            <MoviePost movie={movie} />
 
         </div>
-        
-        
+
+
     );
 }
 

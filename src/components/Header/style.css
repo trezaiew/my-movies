@@ -1,9 +1,7 @@
 header {
     width: 100%;
-    background-color: aquamarine;
     height: 64px;
     margin-top: 0;
-
 }
 
 ul {
@@ -15,6 +13,7 @@ ul {
 li {
     list-style: none;
     padding: 15px;
+    
 }
 
 .navbar-brand {
@@ -22,10 +21,3 @@ li {
     margin-left: 20px;
 }
 
-form{
-    transform: translateX(-30%);
-    background-color: aliceblue;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}

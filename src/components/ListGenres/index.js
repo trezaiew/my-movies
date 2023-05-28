@@ -1,38 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Select from 'react-select';
 
 import './style.css';
 
 
-const ListGenres = ({ genres,genreId, setGenreId }) => {
+const ListGenres = ({ genres, genreId, setGenreId }) => {
+  const options = [
+    { value: '1', label: 'All' },
+  ]
+  genres.map(genre => (
+    options.push({ value: genre.id, label: genre.name })
+  ))
+  return (
 
-    return (
-        // <>
+    <div id="viewport ">
 
-<div id="viewport">
-  
-  <div id="sidebar">
-    <header>
-      <a href="#">genres</a>
-    </header>
-    <ul class="nav">
-    {genres.map(genre => (
-        <li key={genre.id}>
-          
-          <button onClick={() => {
-            setGenreId(genre.id);
-            console.log(genre.id);
-          }
-          } className="list-item mt-2">{genre.name}</button>
-        </li>
-    ))}
+      <label for='sidebar' className='d-flex '>genres</label>
+      <div id="sidebar">
+        <header>
+          {/* <a href="#">genres</a> */}
+        </header>
+        <Select className='select' options={options} onChange={e => {
+          setGenreId(e.value)
+        }} />
 
-    </ul>
-  </div>
- 
-</div>
-        
-    );
+      </div>
+    </div>
+  );
 
 }
 

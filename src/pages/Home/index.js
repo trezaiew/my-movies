@@ -12,7 +12,7 @@ import { useParams } from "react-router-dom";
 import './style.css';
 
 const Home = () => {
-  
+
   const { numberPage } = useParams();
 
   const [posts, setPosts] = useState([]);
@@ -30,14 +30,14 @@ const Home = () => {
   const BASE_API_URL_GENRES = "https://moviesapi.ir/api/v1/genres";
 
   if (genreId) {
-      
-    BASE_API_URL ="https://moviesapi.ir/api/v1/genres/" + genreId + "/movies";
+
+    BASE_API_URL = "https://moviesapi.ir/api/v1/genres/" + genreId + "/movies";
 
   }
 
   useEffect(() => {
 
-    console.log("useEffect");
+    
     const fetchPosts = async () => {
       setLoading(true);
 
@@ -79,7 +79,7 @@ const Home = () => {
           BASE_API_URL_GENRES,
           ""
         );
-    
+
         setItem('genres', res);
         setGenres(res);
         setError(false);
@@ -95,7 +95,7 @@ const Home = () => {
 
     fetchGenres();
     fetchPosts();
-  }, [genreId,currentPage]);
+  }, [genreId, currentPage]);
 
   // Change page
   const paginate = (pageNumber) => {
@@ -103,22 +103,23 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <Header > </Header>
-      <ListGenres genres={genres} genreId={genreId} setGenreId={setGenreId} />
-      <SearchBox setCurrentPage={setCurrentPage} setSearch={setSearch} search={search}/>
 
-      <Posts posts={posts} loading={loading}  movieId={movieId}/>
+    <div>
+      <Header  > </Header>
+      <SearchBox setCurrentPage={setCurrentPage} setSearch={setSearch} search={search} genres={genres} genreId={genreId} setGenreId={setGenreId} />
+      <Posts posts={posts} loading={loading} movieId={movieId} />
       <Pagination className="pagination"
         itemsCountPerPage={postsPerPage}
         totalItemsCount={totalPosts}
         pageRangeDisplayed={5}
         onChange={paginate}
         activePage={Number(currentPage)}
-      
+
       />
-      
+
     </div>
+
+
   );
 }
 
