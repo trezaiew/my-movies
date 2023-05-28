@@ -6,7 +6,6 @@ import './style.css';
 function Header() {
 
   return (
-    // <div className='bg-warning'>
     <nav className="navbar navbar-expand-lg bg-warning navbar-dark mt-0">
       <a className="navbar-brand" href="#">MyMovies</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,14 +25,10 @@ function Header() {
           <li className="nav-item">
             <a className="nav-link" href="#">Contact</a>
           </li>
-
           <ModalRegister />
-
-
         </ul>
       </div>
     </nav>
-    // </div>
 
   )
 }

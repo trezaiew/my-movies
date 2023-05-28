@@ -1,15 +1,15 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import Posts from '../../components/post';
 import Pagination from "react-js-pagination";
-import ListGenres from "../../components/ListGenres";
 import SearchBox from "../../components/SearchBox";
 import Loading from '../../components/Loading';
 import enHancedFetch from "../../services/http";
 import { getItem, setItem } from "../../services/storage";
 import { useParams } from "react-router-dom";
-import './style.css';
+
 
 const Home = () => {
 
@@ -97,7 +97,7 @@ const Home = () => {
     fetchPosts();
   }, [genreId, currentPage]);
 
-  // Change page
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -105,7 +105,7 @@ const Home = () => {
   return (
 
     <div>
-      <Header  > </Header>
+      <Header></Header>
       <SearchBox setCurrentPage={setCurrentPage} setSearch={setSearch} search={search} genres={genres} genreId={genreId} setGenreId={setGenreId} />
       <Posts posts={posts} loading={loading} movieId={movieId} />
       <Pagination className="pagination"
@@ -116,7 +116,7 @@ const Home = () => {
         activePage={Number(currentPage)}
 
       />
-
+      <Footer></Footer>
     </div>
 
 
