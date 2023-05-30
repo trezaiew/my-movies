@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import Loading from "../../components/Loading";
 import { setItem, getItem } from "../../services/storage";
 import enHancedFetch from "../../services/http";
@@ -57,6 +58,7 @@ const Movie = () => {
             <Header />
 
             <MoviePost movie={movie} />
+            <Footer />
 
         </div>
 
