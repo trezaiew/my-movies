@@ -2,6 +2,7 @@ import React from "react";
 
 
 const ModalRegister = ({name, email, password, handleSubmit, setName, setEmail, setPassword}) => {
+   
     return (
         <>
           <li className="nav-item" data-bs-toggle="modal" data-bs-target="#modal-content">
@@ -14,7 +15,9 @@ const ModalRegister = ({name, email, password, handleSubmit, setName, setEmail, 
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                         </div>
                         <div className="modal-body ">
-                            <form action=""  onSubmit={handleSubmit}>
+                            <form action=""  
+                            onSubmit={handleSubmit}
+                            >
                                 <div className="my-2 ">
                                     <label htmlFor="name-input" className="mb-3 ">name</label>
                                     <input type="text" className="form-control" id="name-input" placeholder="Name"value={name} onChange={(e) => setName(e.target.value)}></input>
@@ -30,7 +33,9 @@ const ModalRegister = ({name, email, password, handleSubmit, setName, setEmail, 
                             </form>
                         </div>
                         <div className="modal-footer justify-content-center">
-                            <button className="btn btn-danger w-50">submit</button>
+                            <button className="btn btn-danger w-50"
+                                onClick={handleSubmit}
+                            >submit</button>
                         </div>
                     </div>
 

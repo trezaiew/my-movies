@@ -1,5 +1,6 @@
 import ListGenres from '../ListGenres';
-import ModalRegister from '../ModalRegister';
+// import ModalRegister from '../ModalRegister';
+import SignUp from '../../pages/SignUp';
 import { Link } from 'react-router-dom';
 import './style.css';
 
@@ -25,7 +26,8 @@ function Header() {
           <li className="nav-item">
             <a className="nav-link" href="#">Contact</a>
           </li>
-          <ModalRegister />
+          {/* <ModalRegister /> */}
+          <SignUp>SignUp</SignUp>
         </ul>
       </div>
     </nav>

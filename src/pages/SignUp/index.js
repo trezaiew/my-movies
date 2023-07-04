@@ -13,27 +13,48 @@ const SignUp = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState(false);
+    const [submit,setSubmit] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [passwordError, setpasswordError] = useState('');
 
+    const getHandler = (setter)=> {
+       return function handler(e) {
+           setter(e.target.value);
+        }
+    }
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
        
        
         const Request = async () => {
             try {
-                const data = {
+                const payload = {
                     name,
                     password,
-                    email
+                    email,
                 }
-                const res = await enHancedFetch('POST',REGISTER_API, data)
-                console.log('response', res.data);
+                const res = await enHancedFetch(REGISTER_API, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setLoading(true);
+                setSubmit(true);
+
+               console.log('response', res.data);
             } catch (error) {
-                console.log(error);
+
+                console.log("error", error);
             }
         }
 
         if (!password || password.length < 8) {
             setError(true);
+            setpasswordError('password is not valid');
+            
             console.log('password is not valid');
             return;
         }
@@ -46,15 +67,22 @@ const SignUp = () => {
     return (
         <>
             <ModalRegister
-                name={name}
-                password={password}
-                email={email}
-                setName={setName}
-                setPassword={setPassword}
-                setEmail={setEmail}
                 handleSubmit={handleSubmit}
+                password={password}
+                setPassword={setPassword}
+                name={name}
+                setName={setName}
+                email={email}
+                setEmail={setEmail}
                 error={error}
                 setError={setError}
+                submit={submit}
+                setSubmit={setSubmit}
+                loading={loading}
+                setLoading={setLoading}
+                passwordError={passwordError}
+                setpasswordError={setpasswordError}
+
             />
         </>
     );
