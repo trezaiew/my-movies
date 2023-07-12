@@ -34,19 +34,14 @@ const SignUp = () => {
                     password,
                     email,
                 }
-                const res = await enHancedFetch(REGISTER_API, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+                const res = await fetch("POST",REGISTER_API,payload)
+              
                 setLoading(true);
                 setSubmit(true);
 
                console.log('response', res.data);
             } catch (error) {
-
+                setSubmit(false)
                 console.log("error", error);
             }
         }

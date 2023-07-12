@@ -28,7 +28,7 @@ const ModalRegister = ({name, email, password, handleSubmit, setName, setEmail, 
                                 </div>
                                 <div className="">
                                     <label htmlFor="password-input" className="my-3 ">password</label>
-                                    <input type="text" className="form-control" id="password-input" placeholder="Password"value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                                    <input type="password" className="form-control" id="password-input" placeholder="Password"value={password} onChange={(e) => setPassword(e.target.value)}></input>
                                 </div>
                             </form>
                         </div>
