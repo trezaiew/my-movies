@@ -34,7 +34,14 @@ const SignUp = () => {
                     password,
                     email,
                 }
-                const res = await fetch("POST",REGISTER_API,payload)
+                const res = await fetch(REGISTER_API,{
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                  })
+
               
                 setLoading(true);
                 setSubmit(true);
